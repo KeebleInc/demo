@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+
+<html>
+  
+  <!-- UTT Tracking Code -->
+  <!-- UTT Tracking must fire off first -->
+
+<head>
+
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-MMV3BD9F');</script>
+<!-- End Google Tag Manager -->
+  
+<script type="text/javascript">(function(a,b,c,d,e,f,g){e['ire_o']=c;e[c]=e[c]||function(){(e[c].a=e[c].a||[]).push(arguments)};f=d.createElement(b);g=d.getElementsByTagName(b)[0];f.async=1;f.src=a;g.parentNode.insertBefore(f,g);})('https://utt.impactcdn.com/A4501270-1b5d-4301-9015-1b55b3623e4665535.js','script','ire',document,window);</script>
+
+</head>
+
+<!-- This needs to be placed in html tag for verification as Media Partner -->
+<!-- this generates a click ID for the landing page -->
+<meta name='ir-site-verification-token' value='-1828744636'>
+  
+<body>
+
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MMV3BD9F"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+  
+<!-- The identify function is used to identify users as accurately across your site -->
+  
+<script type="text/javascript">
+               ire('identify', {customerId: '10001', customerEmail: ''});
+</script>
+
+<!-- The trackConversion function is used on your site order confirmation page to track the conversion data of an online sale and report it to impact.com -->
+
+  <!--
+<script type="text/javascript">
+  ire('trackConversion', 39382, {
+    orderId: "",
+    customerId: "10001",
+    customerEmail: '',
+    customerStatus: "New",
+    currencyCode: "ZAR",
+    orderPromoCode: "ChildTest",
+    orderDiscount: 1.00,
+    items: [
+      {
+        subTotal: 23.00,
+        category: "Product Category 33",
+        sku: "sku-1333",
+        quantity: 3,
+        name: "Books",
+      },
+      {
+        subTotal: 94.00,
+        category: "Product Category 44",
+        sku: "sku-444",
+        quantity: 1,
+        name: "Binders",
+      }
+    ]
+  },
+  {
+    verifySiteDefinitionMatch:true
+  }
+  );
+</script>
+  -->
+  
+<h1>IE Test Site</h1>
+  
+<script>
+// URL to Paste in search and change param values if need be
+// https://rustumf.github.io/GTMRfo/?orderId=123&customerId=5001
+
+// pull out URL
+var docurl = document.URL;
+var url = new URL(docurl);
+  
+// get params from URL
+var params = url.searchParams; 
+var orderId_val = params.get('orderId');
+var customerId_val = params.get('customerId');
+
+// Display the param values for test that the values change when changed in URL
+// Test that values change when URL is changed, but only as a test  
+//alert("orderId -->" + orderId_val);
+//alert("customerId -->" + customerId_val);
+  
+// Initialize data layer
+// Initialize with each change
+dataLayer = [];
+
+dataLayertest = 
+[
+    {
+        subTotal: 30.00,
+        category: "testcat",
+        sku: "sku-123",
+        quantity: 1,
+        name: "skuname_test",   
+    },
+    {
+        subTotal: 50.00,
+        category: "Product Category 44",
+        sku: "sku-321",
+        quantity: 1,
+        name: "skuname_test2",
+    }
+]
+  
+// Push values data layer
+dataLayer.push({'key': orderId_val, 'value': customerId_val});
+ 
+// function API request
+function APILocation() {
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+     // an alert
+     alert(this.responseText);
+     // to console
+     console.log(this.responseText)
+    }
+  };
+  xhttp.open("GET", "https://httpbin.org/get?key=" + dataLayer[0].key + "&value=" + dataLayer[0].value, true);
+  xhttp.send();
+};
+
+// function API request
+function UTT_TrackerEvent() {
+    ire('trackConversion', 39382 /* this is the ID of the Event ID */, {
+    orderId: orderId_val,
+    customerId: customerId_val,
+    customerEmail: '',
+    customerStatus: "New",
+    currencyCode: "ZAR",
+    orderPromoCode: "GTMRfo",
+    orderDiscount: 1.00,
+    items: [
+      {
+        subTotal: 30.00,
+        category: "Product Category 33",
+        sku: "sku-1333",
+        quantity: 1,
+        name: "Books",
+      },
+      {
+        subTotal: 50.00,
+        category: "Product Category 44",
+        sku: "sku-1444",
+        quantity: 1,
+        name: "Binders",
+      }
+    ]
+  },
+  {
+    verifySiteDefinitionMatch:true
+  }
+  );
+};
+
+// function API request
+function UTT_TrackerEventTest() {
+    ire('trackConversion', 39382 /* this is the ID of the Event ID */, {
+    orderId: orderId_val,
+    customerId: customerId_val,
+    customerEmail: '',
+    customerStatus: "New",
+    currencyCode: "ZAR",
+    orderPromoCode: "GTMRfo",
+    orderDiscount: 1.00,
+    items: dataLayertest
+  },
+  {
+    verifySiteDefinitionMatch:true
+  }
+  );
+};
+
+  // function API request
+function GTM_TrackerEventTest() {
+    ire('trackConversion', 39382 /* this is the ID of the Event ID */, {
+    orderId: "{{orderId}}",
+    customerId: "{{customerId}}",
+    customerEmail: '',
+    customerStatus: "{{customerStatus}}",
+    currencyCode: "{{currencyCode}}"
+    items: dataLayertest
+  },
+  {
+    verifySiteDefinitionMatch:true
+  }
+  );
+};
+  
+</script>
+
+<button onclick ="UTT_TrackerEvent()">
+         UTT Integration
+</button>
+
+  <button onclick ="GTM_TrackerEventTest()">
+         GTM Integration
+</button>
+  
+<button onclick ="APILocation()">
+         GET API Request
+      </button>
+
+<br>
+  
+<a href="https://www.impact.com">impact.com</a>
+  
+</body>
+</html>
+
+Co
