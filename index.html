@@ -1,9 +1,6 @@
 <!DOCTYPE html>
 
 <html>
-  
-  <!-- UTT Tracking Code -->
-  <!-- UTT Tracking must fire off first -->
 
 <head>
 
@@ -52,87 +49,68 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         category: "Product Category 33",
         sku: "sku-1333",
         quantity: 3,
-        name: "Books",
+        name: "Books"
       },
       {
         subTotal: 94.00,
         category: "Product Category 44",
         sku: "sku-444",
         quantity: 1,
-        name: "Binders",
+        name: "Binders"
       }
     ]
   },
   {
-    verifySiteDefinitionMatch:true
-  }
-  );
+    verifySiteDefinitionMatch: true
+  });
 </script>
-  -->
-  
+
 <h1>DEMO BRAND SETUP</h1>
-  
+
 <script>
-// URL to Paste in search and change param values if need be
+// Pull out URL and get params from URL
+var url = new URL(document.URL);
+var orderId_val = url.searchParams.get('orderId');
+var customerId_val = url.searchParams.get('customerId');
 
-
-// pull out URL
-var docurl = document.URL;
-var url = new URL(docurl);
-  
-// get params from URL
-var params = url.searchParams; 
-var orderId_val = params.get('orderId');
-var customerId_val = params.get('customerId');
-
-// Display the param values for test that the values change when changed in URL
-// Test that values change when URL is changed, but only as a test  
-//alert("orderId -->" + orderId_val);
-//alert("customerId -->" + customerId_val);
-  
 // Initialize data layer
-// Initialize with each change
-dataLayer = [];
+var dataLayer = [];
+var dataLayertest = [
+  {
+    subTotal: 30.00,
+    category: "testcat",
+    sku: "sku-123",
+    quantity: 1,
+    name: "skuname_test"
+  },
+  {
+    subTotal: 50.00,
+    category: "Product Category 44",
+    sku: "sku-321",
+    quantity: 1,
+    name: "skuname_test2"
+  }
+];
 
-dataLayertest = 
-[
-    {
-        subTotal: 30.00,
-        category: "testcat",
-        sku: "sku-123",
-        quantity: 1,
-        name: "skuname_test",   
-    },
-    {
-        subTotal: 50.00,
-        category: "Product Category 44",
-        sku: "sku-321",
-        quantity: 1,
-        name: "skuname_test2",
-    }
-]
-  
-// Push values data layer
-dataLayer.push({'key': orderId_val, 'value': customerId_val});
- 
-// function API request
+// Push values to data layer
+dataLayer.push({ key: orderId_val, value: customerId_val });
+
+// API request function
 function APILocation() {
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
-     // an alert
-     alert(this.responseText);
-     // to console
-     console.log(this.responseText)
+      console.log(this.responseText);
+      alert(this.responseText);
     }
   };
   xhttp.open("GET", "https://httpbin.org/get?key=" + dataLayer[0].key + "&value=" + dataLayer[0].value, true);
   xhttp.send();
-};
+}
 
-// function API request
+// UTT Tracker Event function
 function UTT_TrackerEvent() {
-    ire('trackConversion', 39382 /* this is the ID of the Event ID */, {
+  ire('trackConversion', 39382, {
     orderId: orderId_val,
     customerId: customerId_val,
     customerEmail: '',
@@ -146,26 +124,25 @@ function UTT_TrackerEvent() {
         category: "Product Category 33",
         sku: "sku-1333",
         quantity: 1,
-        name: "Books",
+        name: "Books"
       },
       {
         subTotal: 50.00,
         category: "Product Category 44",
         sku: "sku-1444",
         quantity: 1,
-        name: "Binders",
+        name: "Binders"
       }
     ]
   },
   {
-    verifySiteDefinitionMatch:true
-  }
-  );
-};
+    verifySiteDefinitionMatch: true
+  });
+}
 
-// function API request
+// UTT Tracker Event Test function
 function UTT_TrackerEventTest() {
-    ire('trackConversion', 39382 /* this is the ID of the Event ID */, {
+  ire('trackConversion', 39382, {
     orderId: orderId_val,
     customerId: customerId_val,
     customerEmail: '',
@@ -176,27 +153,24 @@ function UTT_TrackerEventTest() {
     items: dataLayertest
   },
   {
-    verifySiteDefinitionMatch:true
-  }
-  );
-};
+    verifySiteDefinitionMatch: true
+  });
+}
 
-  // function API request
+// GTM Tracker Event Test function
 function GTM_TrackerEventTest() {
-    ire('trackConversion', 39382 /* this is the ID of the Event ID */, {
+  ire('trackConversion', 39382, {
     orderId: "{{orderId}}",
     customerId: "{{customerId}}",
     customerEmail: '',
     customerStatus: "{{customerStatus}}",
-    currencyCode: "{{currencyCode}}"
+    currencyCode: "{{currencyCode}}",
     items: dataLayertest
   },
   {
-    verifySiteDefinitionMatch:true
-  }
-  );
-};
-  
+    verifySiteDefinitionMatch: true
+  });
+}
 </script>
 
 <button onclick ="UTT_TrackerEvent()">
