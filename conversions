@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conversion Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 20px;
+        }
+        .content {
+            padding: 50px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Conversion Page</h1>
+    </header>
+    <div class="content">
+        <p>This is the conversion page.</p>
+    </div>
+    
+    <script type="text/javascript">
+        ire('trackConversion', 25612, {
+             orderId: "Order Id here",
+             customProfileId: "UUID here",
+             customerId: "Customer Id here",
+             customerEmail: "SHA1 Hash of Customer’s Email",
+             customerStatus: "Customer Status here",
+             currencyCode: "USD",
+             orderPromoCode: "Promo Code here",
+             orderDiscount: 15.00,
+             items: [
+                   {
+                       subTotal: 28.00,
+                       category: "Product Category 1",
+                       sku: "sku-11111",
+                       quantity: 2,
+                       name: "Product Name 1"
+                   },
+                   {
+                       subTotal: 99.00,
+                       category: "Product Category 2",
+                       sku: "sku-22222",
+                       quantity: 3,
+                       name: "Product Name 2"
+                   }
+               ]
+            },
+            {
+            verifySiteDefinitionMatch:true
+            }
+        );
+    </script>
+</body>
+</html>
