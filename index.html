@@ -31,7 +31,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- The identify function is used to identify users as accurately across your site -->
   
 <script type="text/javascript">
-               ire('identify', {customerId: '', customerEmail: ''});
+               ire('identify', {customerId: 'Justin', customerEmail: 'justin.keeble@impact.com', customProfileId: 'Justin'});
 </script>
 
 <!-- The trackConversion function is used on your site order confirmation page to track the conversion data of an online sale and report it to impact.com -->
@@ -66,35 +66,23 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </style>
   
 <script type="text/javascript">
-  ire('trackConversion', 39382, {
-    orderId: "",
-    customerId: "10001",
-    customerEmail: '',
+ire('trackConversion', 48912, {
+    orderId: "009testGTM",
+    customProfileId: "123GTM",
+    customerId: "Justin",
+    customerEmail: "justin.keeble@impact.com",
     customerStatus: "New",
     currencyCode: "ZAR",
-    orderPromoCode: "ChildTest",
-    orderDiscount: 1.00,
     items: [
-      {
-        subTotal: 23.00,
-        category: "Product Category 33",
-        sku: "sku-1333",
-        quantity: 3,
-        name: "Books",
-      },
-      {
-        subTotal: 94.00,
-        category: "Product Category 44",
-        sku: "sku-444",
-        quantity: 1,
-        name: "Binders",
-      }
+        {
+        	subTotal: 19.99,
+        	category: "Burger Meals",
+        	sku: "bm-001",
+        	quantity: 1,
+        	name: "Kentucky Zinger Burger",
+        }
     ]
-  },
-  {
-    verifySiteDefinitionMatch:true
-  }
-  );
+}, {verifySiteDefinitionMatch:true});
 </script>
 
   
